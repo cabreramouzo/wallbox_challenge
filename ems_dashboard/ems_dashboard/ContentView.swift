@@ -9,7 +9,9 @@ import SwiftUI
 
 struct ContentView: View {
     @EnvironmentObject var liveDataVM: LiveDataViewModel
+    @StateObject var HistoricalDataVM = HistoricalDataViewModel()
     var body: some View {
+        NavigationView {
         VStack {
             Form {
                 Section(header: Text("Quasar Energy")) {
@@ -67,6 +69,12 @@ struct ContentView: View {
                 }
                 
                 Section(header: Text("Statistics")) {
+                    NavigationLink(
+                        destination: detailView(samples: HistoricalDataVM.samples),
+                        label: {
+                            Text("gohgof")
+                        })
+                        .navigationTitle(Text("Random Users"))
                     HStack {
                         VStack {
                             Text("3.45 Kwh")
@@ -105,6 +113,7 @@ struct ContentView: View {
                     }
                 }
             }
+        }
         }
     }
 }

@@ -13,11 +13,12 @@ final class LiveDataViewModel: ObservableObject {
     init() {
         let file = "live_data"
         guard let url = Bundle.main.url(forResource: file, withExtension: "json") else {
-                    fatalError("Failed to locate \(file) in bundle.")
-                }
+            fatalError("Failed to locate \(file) in bundle.")
+        }
         guard let data = try? Data(contentsOf: url) else {
-                    fatalError("Failed to load \(file) from bundle.")
-                }
+            fatalError("Failed to load \(file) from bundle.")
+        }
+        
         do {
             let decoder = JSONDecoder()
             try liveData = decoder.decode(LiveDataModel.self, from: data)

@@ -17,10 +17,10 @@ import Foundation
 //   "timestamp": "2021-09-27T16:06:00+00:00"
 //}
 
-struct sample: Codable {
+struct HistoricalDataSample: Codable, Hashable {
     let building_active_power: Float
     let grid_active_power: Float
     let pv_active_power: Float
     let quasars_active_power: Float
-    let timestamp: Date
+    let timestamp: String
 }
