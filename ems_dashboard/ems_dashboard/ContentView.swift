@@ -8,18 +8,19 @@
 import SwiftUI
 
 struct ContentView: View {
+    @EnvironmentObject var liveDataVM: LiveDataViewModel
     var body: some View {
         VStack {
             Form {
                 Section(header: Text("Quasar Energy")) {
                     HStack {
                         VStack {
-                            Text("3.45 Kwh")
+                            Text(String(liveDataVM.liveData.quasars_power))
                             Text("Charged")
                         }
                         Spacer()
                         VStack {
-                            Text("3.45 Kwh")
+                            Text(String(liveDataVM.liveData.quasars_power))
                             Text("Discharged")
                         }
                         
@@ -29,24 +30,24 @@ struct ContentView: View {
                 Section(header: Text("Live data")) {
                     HStack {
                         VStack {
-                            Text("3.45 Kwh")
+                            Text(String(liveDataVM.liveData.solar_power))
                             Text("Solar Power")
                         }
                         Spacer()
                         VStack {
-                            Text("3.45 Kwh")
+                            Text(String(liveDataVM.liveData.quasars_power))
                             Text("Quasar Power")
                         }
                         
                     }
                     HStack {
                         VStack {
-                            Text("3.45 Kwh")
+                            Text(String(liveDataVM.liveData.grid_power))
                             Text("Grid")
                         }
                         Spacer()
                         VStack {
-                            Text("3.45 Kwh")
+                            Text(String(liveDataVM.liveData.system_soc))
                             Text("System soc")
                         }
                         

@@ -9,9 +9,11 @@ import SwiftUI
 
 @main
 struct ems_dashboardApp: App {
+    @StateObject var viewModel = LiveDataViewModel()
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(viewModel)
         }
     }
 }
