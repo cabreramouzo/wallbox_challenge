@@ -6,57 +6,44 @@
 //
 
 import SwiftUI
+import SwiftUICharts
+
+func fillSamplesArrayReduced5(samples: [HistoricalDataSample]) -> [Double] {
+    var arr = [Double]()
+    for (idx,sample) in samples.enumerated() {
+        if idx % 5 == 0 {
+            arr.append(Double(sample.building_active_power))
+        }
+        
+    }
+    return arr
+}
+
+func fillSamplesArray(samples: [HistoricalDataSample]) -> [Double] {
+    var arr = [Double]()
+    for sample in samples {
+        arr.append(Double(sample.building_active_power))
+    }
+    return arr
+}
+
+func fillSamplesArray2(samples: [HistoricalDataSample]) -> [Double] {
+    var arr = [Double]()
+    for sample in samples {
+        arr.append(Double(sample.grid_active_power))
+    }
+    print(arr.count)
+    return arr
+}
 
 struct detailView: View {
     var samples: [HistoricalDataSample]
     var body: some View {
-        NavigationView {
-            List {
-                ForEach(samples, id: \.self) { sample in
-                    Text(String(sample.building_active_power))
-                }
-            }
+        VStack {
+            LineView(data: fillSamplesArrayReduced5(samples: samples), title: "full").padding()
+            LineView(data: fillSamplesArray2(samples: samples), title: "full2").padding()
         }
         
-//        Form {
-//
-//            Section(header: Text("Energy Chart")) {
-//                VStack {
-//                    VStack {
-//                        Image(systemName: "chart.bar.fill")
-//                            .resizable()
-//                            .scaledToFit()
-//                    }
-//                    Spacer()
-//                    HStack {
-//                        VStack(alignment: .leading) {
-//                            Label(
-//                                title: { Text("Building").font(.callout) },
-//                                icon: { Image(systemName: "circle.fill").accentColor(.blue)}
-//                            )
-//                            Spacer()
-//                            Label(
-//                                title: { Text("Grid") },
-//                                icon: { Image(systemName: "circle.fill").accentColor(.red)}
-//                            )
-//                        }
-//                        Spacer()
-//                        VStack(alignment:.leading) {
-//                            Label(
-//                                title: { Text("PV") },
-//                                icon: { Image(systemName: "circle.fill").accentColor(.orange)}
-//                            )
-//                            Spacer()
-//                            Label(
-//                                title: { Text("Quasars") },
-//                                icon: { Image(systemName: "circle.fill").accentColor(.green)}
-//                            )
-//                        }
-//                    }
-//
-//                }
-//            }
-//        }
     }
 }
 
