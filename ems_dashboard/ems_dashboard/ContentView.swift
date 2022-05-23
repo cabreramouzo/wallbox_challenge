@@ -70,7 +70,11 @@ struct ContentView: View {
                 
                 Section(header: Text("Statistics")) {
                     NavigationLink(
-                        destination: detailView(samples: HistoricalDataVM.samples),
+                        destination: detailView(
+                            samples_building: HistoricalDataVM.getReducedSampleValues(reduced: 5, by: .building_active_power),
+                            samples_grid: HistoricalDataVM.getReducedSampleValues(reduced: 5, by: .grid_active_power),
+                            samples_pv: HistoricalDataVM.getReducedSampleValues(reduced: 5, by: .pv_active_power),
+                            samples_quasars: HistoricalDataVM.getReducedSampleValues(reduced: 5, by: .quasars_active_power)),
                         label: {
                             Text("gohgof")
                         })

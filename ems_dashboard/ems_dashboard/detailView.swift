@@ -8,47 +8,45 @@
 import SwiftUI
 import SwiftUICharts
 
-func fillSamplesArrayReduced5(samples: [HistoricalDataSample]) -> [Double] {
-    var arr = [Double]()
-    for (idx,sample) in samples.enumerated() {
-        if idx % 5 == 0 {
-            arr.append(Double(sample.building_active_power))
-        }
-        
-    }
-    return arr
-}
-
-func fillSamplesArray(samples: [HistoricalDataSample]) -> [Double] {
-    var arr = [Double]()
-    for sample in samples {
-        arr.append(Double(sample.building_active_power))
-    }
-    return arr
-}
-
-func fillSamplesArray2(samples: [HistoricalDataSample]) -> [Double] {
-    var arr = [Double]()
-    for sample in samples {
-        arr.append(Double(sample.grid_active_power))
-    }
-    print(arr.count)
-    return arr
-}
-
 struct detailView: View {
-    var samples: [HistoricalDataSample]
+    var samples_building: [Double]
+    var samples_grid: [Double]
+    var samples_pv: [Double]
+    var samples_quasars: [Double]
+    
     var body: some View {
-        VStack {
-            LineView(data: fillSamplesArrayReduced5(samples: samples), title: "full").padding()
-            LineView(data: fillSamplesArray2(samples: samples), title: "full2").padding()
+
+        ScrollView {
+            LineView(data: samples_building, title: "Building").padding().frame(width: .infinity, height: 300, alignment: .center)
+            Spacer().padding(.bottom, 50)
+                LineView(data: samples_grid, title: "Grid").padding()
+                    .frame(width: .infinity, height: 300, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+            Spacer().padding(.bottom, 50)
+                LineView(data: samples_pv, title: "PV").padding()
+                    .frame(width: .infinity, height: 300, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+            Spacer().padding(.bottom, 50)
+                LineView(data: samples_quasars, title: "Quasars").padding()
+                    .frame(width: .infinity, height: 300, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+            Spacer().padding(.bottom, 50)
+            MultiLineChartView(data: [
+                                (samples_building, GradientColors.green),
+                                (samples_grid, GradientColors.purple),
+                                (samples_pv, GradientColors.orngPink),
+                                (samples_quasars, GradientColors.prplNeon)], title: "All", legend: "", style: ChartStyle(backgroundColor: Color.white, accentColor: Color.black, gradientColor: GradientColors.green, textColor: Color.black, legendTextColor: Color.black, dropShadowColor: Color.clear), form: ChartForm.large, dropShadow: false)
+            Spacer().padding(.bottom, 50)
+            
+            
+            
+            
         }
+            
+        
         
     }
 }
 
 struct detailView_Previews: PreviewProvider {
     static var previews: some View {
-        detailView(samples: [HistoricalDataSample(building_active_power: 1, grid_active_power: 1, pv_active_power: 1, quasars_active_power: 1, timestamp: "aaa")])
+        detailView(samples_building: [1,2,34,7], samples_grid: [1,2,34,7], samples_pv: [1,2,34,7], samples_quasars: [1,2,34,7])
     }
 }

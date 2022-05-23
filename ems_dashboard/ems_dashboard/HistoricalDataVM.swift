@@ -34,4 +34,44 @@ final class HistoricalDataViewModel: ObservableObject {
             fatalError("Failed to decode \(file) from bundle: \(error.localizedDescription)")
         }
     }
+    
+    func getReducedSamples(reduced by: Int) -> [HistoricalDataSample] {
+        var result: [HistoricalDataSample] = []
+        for (idx, sample) in self.samples.enumerated() {
+            if idx % by == 0 {
+                result.append(sample)
+            }
+            
+        }
+        return result
+    }
+    
+    enum sampleType {
+        case building_active_power
+        case grid_active_power
+        case pv_active_power
+        case quasars_active_power
+        
+    }
+    
+    func getReducedSampleValues(reduced by: Int, by type: sampleType) -> [Double] {
+        var result: [Double] = []
+        for (idx, sample) in self.samples.enumerated() {
+            if idx % by == 0 {
+                switch type {
+                case .building_active_power:
+                    result.append(Double(sample.building_active_power))
+                case .grid_active_power:
+                    result.append(Double(sample.grid_active_power))
+                case .pv_active_power:
+                    result.append(Double(sample.pv_active_power))
+                case .quasars_active_power:
+                    result.append(Double(sample.quasars_active_power))
+                }
+            }
+            
+        }
+        return result
+    }
+    
 }
