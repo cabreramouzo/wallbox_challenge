@@ -104,7 +104,7 @@ struct ContentView: View {
                                     Image(systemName: "chart.bar.fill")
                                 }
                             })
-                            .navigationTitle(Text("View charts"))
+                            .navigationTitle(Text("Dashboard"))
                         HStack {
                             VStack {
                                 Text(String(format: "%.0f", (liveDataVM.liveData.solar_power / liveDataVM.liveData.building_demand) * 100 ) + " %")

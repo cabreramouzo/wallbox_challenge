@@ -23,23 +23,23 @@ struct detailView: View {
         
         List {
             Group {
-                LineView(data: samples_building, title: "Building", style: chart_style_building).padding().frame(width: nil, height: 300, alignment: .center)
+                LineView(data: samples_building, title: "Building", style: chart_style_building).padding().frame(width: nil, height: 400, alignment: .center)
                 Spacer().padding(.bottom, 50)
                 LineView(data: samples_grid, title: "Grid", style: chart_style_grid).padding()
-                    .frame(width: nil, height: 300, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                    .frame(width: nil, height: 400, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                 Spacer().padding(.bottom, 50)
                 LineView(data: samples_pv, title: "PV", style: chart_style_pv).padding()
-                    .frame(width: nil, height: 300, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                    .frame(width: nil, height: 400, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                 Spacer().padding(.bottom, 50)
                 LineView(data: samples_quasars, title: "Quasars", style: chart_style_quasars).padding()
-                    .frame(width: nil, height: 300, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                    .frame(width: nil, height: 400, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                 Spacer().padding(.bottom, 50)
                 MultiLineChartView(data: [
                                     (samples_building, GradientColors.green),
                                     (samples_grid, GradientColors.purple),
                                     (samples_pv, GradientColors.orngPink),
                                     (samples_quasars, GradientColors.blue)], title: "All", legend: "", style: ChartStyle(backgroundColor: Color.white, accentColor: Color.black, gradientColor: GradientColors.green, textColor: Color.black, legendTextColor: Color.black, dropShadowColor: Color.clear), form: ChartForm.large, dropShadow: false)
-                    .padding(.trailing, 10)
+                    .padding()
                 Spacer().padding(.bottom, 50)
             }
             Group {
