@@ -68,7 +68,7 @@ struct DashboardView: View {
                             }
                             Spacer()
                             VStack {
-                                Text(String(liveDataVM.liveData.system_soc) + " Kwh")
+                                Text(String(format: "%.2f", liveDataVM.liveData.system_soc) + " Kwh")
                                     .padding(5)
                                 Text("System soc")
                             }
@@ -77,14 +77,16 @@ struct DashboardView: View {
                         HStack {
                             VStack {
                                 Text(String(liveDataVM.liveData.total_energy) + " Kwh")
+                                    .fontWeight(.bold)
                                     .padding(5)
-                                Text("Total Energy")
+                                Text("Total Energy").fontWeight(.semibold)
                             }
                             Spacer()
                             VStack {
                                 Text(String(liveDataVM.liveData.current_energy) + " Kwh")
+                                    .fontWeight(.bold)
                                     .padding(5)
-                                Text("Current Energy")
+                                Text("Current Energy").fontWeight(.semibold)
                             }
                             
                         }
@@ -107,35 +109,35 @@ struct DashboardView: View {
                             .navigationTitle(Text("Dashboard"))
                         HStack {
                             VStack {
-                                Text(String(format: "%.0f", (liveDataVM.liveData.solar_power / liveDataVM.liveData.building_demand) * 100 ) + " %")
+                                Text(String(format: "%.0f", (liveDataVM.liveData.solar_power / liveDataVM.liveData.building_demand) * 100 ) + " %").padding(5)
                                 Text("Solar Power")
                             }
                             Spacer()
                             VStack {
-                                Text(String(format: "%.0f", (abs(liveDataVM.liveData.quasars_power) / liveDataVM.liveData.building_demand) * 100 ) + " %")
+                                Text(String(format: "%.0f", (abs(liveDataVM.liveData.quasars_power) / liveDataVM.liveData.building_demand) * 100 ) + " %").padding(5)
                                 Text("Quasar Power")
                             }
                             
                         }
                         HStack {
                             VStack {
-                                Text(String(format: "%.0f", (liveDataVM.liveData.grid_power / liveDataVM.liveData.building_demand) * 100 ) + " %")
+                                Text(String(format: "%.0f", (liveDataVM.liveData.grid_power / liveDataVM.liveData.building_demand) * 100 ) + " %").padding(5)
                                 Text("     Grid     ")
                             }
                             Spacer()
                             VStack {
-                                Text(String(format: "%.0f", liveDataVM.liveData.system_soc) + " %")
+                                Text(String(format: "%.0f", liveDataVM.liveData.system_soc) + " %").padding(5)
                                 Text("System SoC status")
                             }
                         }
                         HStack {
                             VStack {
-                                Text(String(liveDataVM.liveData.total_energy) + " kwh")
+                                Text(String(liveDataVM.liveData.total_energy) + " kwh").padding(5)
                                 Text("Total Energy")
                             }
                             Spacer()
                             VStack {
-                                Text(String(liveDataVM.liveData.current_energy) + " kwh")
+                                Text(String(liveDataVM.liveData.current_energy) + " kwh").padding(5)
                                 Text("Current Energy")
                             }
                             
