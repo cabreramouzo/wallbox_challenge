@@ -25,7 +25,7 @@ struct ContentView: View {
                                     .frame(width: 40)
                                 Text("Charging from the grid...")
                                     .font(.footnote)
-                                    .padding()
+                                    .padding(5)
                                 Spacer()
                                 Text(String(liveDataVM.liveData.quasars_power) + " Kwh")
                                     .accentColor(.green)
@@ -37,7 +37,7 @@ struct ContentView: View {
                                     .frame(width: 50)
                                 Text("Discharging to the building...")
                                     .font(.footnote)
-                                    .padding()
+                                    .padding(5)
                                 Spacer()
                                 Text(String(liveDataVM.liveData.quasars_power) + " Kwh")
                                     .accentColor(.red)
@@ -49,13 +49,13 @@ struct ContentView: View {
                         HStack {
                             VStack {
                                 Text(String(liveDataVM.liveData.solar_power) + " Kwh")
-                                    .padding()
+                                    .padding(5)
                                 Text("Solar Power")
                             }
                             Spacer()
                             VStack {
                                 Text(String(liveDataVM.liveData.quasars_power) + " Kwh")
-                                    .padding()
+                                    .padding(5)
                                 Text("Quasar Power")
                             }
                             
@@ -63,13 +63,13 @@ struct ContentView: View {
                         HStack {
                             VStack {
                                 Text(String(liveDataVM.liveData.grid_power) + " Kwh")
-                                    .padding()
+                                    .padding(5)
                                 Text("Grid")
                             }
                             Spacer()
                             VStack {
                                 Text(String(liveDataVM.liveData.system_soc) + " Kwh")
-                                    .padding()
+                                    .padding(5)
                                 Text("System soc")
                             }
                             
@@ -77,13 +77,13 @@ struct ContentView: View {
                         HStack {
                             VStack {
                                 Text("3.45 Kwh")
-                                    .padding()
+                                    .padding(5)
                                 Text("Total Energy")
                             }
                             Spacer()
                             VStack {
                                 Text("3.45 Kwh")
-                                    .padding()
+                                    .padding(5)
                                 Text("Current Energy")
                             }
                             
@@ -107,25 +107,25 @@ struct ContentView: View {
                             .navigationTitle(Text("View charts"))
                         HStack {
                             VStack {
-                                Text(String(format: "%.0f", (liveDataVM.liveData.solar_power / liveDataVM.liveData.system_soc) * 100 ) + "%")
+                                Text(String(format: "%.0f", (liveDataVM.liveData.solar_power / liveDataVM.liveData.building_demand) * 100 ) + " %")
                                 Text("Solar Power")
                             }
                             Spacer()
                             VStack {
-                                Text(String(format: "%.0f", (abs(liveDataVM.liveData.quasars_power) / liveDataVM.liveData.system_soc) * 100 ) + "%")
+                                Text(String(format: "%.0f", (abs(liveDataVM.liveData.quasars_power) / liveDataVM.liveData.building_demand) * 100 ) + " %")
                                 Text("Quasar Power")
                             }
                             
                         }
                         HStack {
                             VStack {
-                                Text(String(format: "%.0f", (liveDataVM.liveData.grid_power / liveDataVM.liveData.system_soc) * 100 ) + "%")
-                                Text("Grid")
+                                Text(String(format: "%.0f", (liveDataVM.liveData.grid_power / liveDataVM.liveData.building_demand) * 100 ) + " %")
+                                Text("     Grid     ")
                             }
                             Spacer()
                             VStack {
-                                Text(String(format: "%.0f", liveDataVM.liveData.system_soc) + "%")
-                                Text("System SoC")
+                                Text(String(format: "%.0f", liveDataVM.liveData.system_soc) + " %")
+                                Text("System SoC status")
                             }
                         }
                         HStack {
