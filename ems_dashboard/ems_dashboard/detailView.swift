@@ -70,7 +70,7 @@ struct detailView: View {
                 }
             }
             
-        }
+        }.navigationTitle(Text("Charts detail"))
     }
 }
 

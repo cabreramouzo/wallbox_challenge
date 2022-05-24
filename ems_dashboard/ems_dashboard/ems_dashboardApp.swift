@@ -12,7 +12,7 @@ struct ems_dashboardApp: App {
     @StateObject var viewModel = LiveDataViewModel()
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            DashboardView()
                 .environmentObject(viewModel)
         }
     }

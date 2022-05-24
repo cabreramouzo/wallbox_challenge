@@ -15,7 +15,7 @@
 		04364A0F2839507A00D7E61D /* HistoricalDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04364A0E2839507A00D7E61D /* HistoricalDataModel.swift */; };
 		045AA248283BDB0100685D7A /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = 045AA247283BDB0100685D7A /* SwiftUICharts */; };
 		047E13262837EE2400FBEA2A /* ems_dashboardApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047E13252837EE2400FBEA2A /* ems_dashboardApp.swift */; };
-		047E13282837EE2400FBEA2A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047E13272837EE2400FBEA2A /* ContentView.swift */; };
+		047E13282837EE2400FBEA2A /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047E13272837EE2400FBEA2A /* DashboardView.swift */; };
 		047E132A2837EE3000FBEA2A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 047E13292837EE3000FBEA2A /* Assets.xcassets */; };
 		047E132D2837EE3000FBEA2A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 047E132C2837EE3000FBEA2A /* Preview Assets.xcassets */; };
 		047E13382837EE3000FBEA2A /* ems_dashboardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047E13372837EE3000FBEA2A /* ems_dashboardTests.swift */; };
@@ -49,7 +49,7 @@
 		04364A0E2839507A00D7E61D /* HistoricalDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoricalDataModel.swift; sourceTree = "<group>"; };
 		047E13222837EE2400FBEA2A /* ems_dashboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ems_dashboard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		047E13252837EE2400FBEA2A /* ems_dashboardApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ems_dashboardApp.swift; sourceTree = "<group>"; };
-		047E13272837EE2400FBEA2A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		047E13272837EE2400FBEA2A /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
 		047E13292837EE3000FBEA2A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		047E132C2837EE3000FBEA2A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		047E132E2837EE3000FBEA2A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -122,7 +122,7 @@
 			children = (
 				043649F728394D5400D7E61D /* resources */,
 				047E13252837EE2400FBEA2A /* ems_dashboardApp.swift */,
-				047E13272837EE2400FBEA2A /* ContentView.swift */,
+				047E13272837EE2400FBEA2A /* DashboardView.swift */,
 				043649FF28394E7600D7E61D /* LiveDataVM.swift */,
 				04364A092839506900D7E61D /* LiveDataModel.swift */,
 				04364A0E2839507A00D7E61D /* HistoricalDataModel.swift */,
@@ -302,7 +302,7 @@
 				04364A0028394E7600D7E61D /* LiveDataVM.swift in Sources */,
 				04364A0528394F2400D7E61D /* HistoricalDataVM.swift in Sources */,
 				047E13542837F8A300FBEA2A /* detailView.swift in Sources */,
-				047E13282837EE2400FBEA2A /* ContentView.swift in Sources */,
+				047E13282837EE2400FBEA2A /* DashboardView.swift in Sources */,
 				047E13262837EE2400FBEA2A /* ems_dashboardApp.swift in Sources */,
 				04364A0A2839506900D7E61D /* LiveDataModel.swift in Sources */,
 			);

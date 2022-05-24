@@ -76,13 +76,13 @@ struct DashboardView: View {
                         }
                         HStack {
                             VStack {
-                                Text("3.45 Kwh")
+                                Text(String(liveDataVM.liveData.total_energy) + " Kwh")
                                     .padding(5)
                                 Text("Total Energy")
                             }
                             Spacer()
                             VStack {
-                                Text("3.45 Kwh")
+                                Text(String(liveDataVM.liveData.current_energy) + " Kwh")
                                     .padding(5)
                                 Text("Current Energy")
                             }
