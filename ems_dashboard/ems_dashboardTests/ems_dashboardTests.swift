@@ -18,9 +18,32 @@ class ems_dashboardTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testGetReducedSamples() throws {
+                
+        let s1 = HistoricalDataSample(building_active_power: 1.2, grid_active_power: 2.3, pv_active_power: 3.4, quasars_active_power: 4.5, timestamp: "")
+        
+        let array = [s1,s1,s1,s1,s1,s1,s1,s1,s1,s1]
+        let vm = HistoricalDataViewModel(samples: array)
+        
+        let result = vm.getReducedSamples(reduced: 3)
+        
+        assert(type(of: result) == [HistoricalDataSample].self)
+        assert(result.count == 3)
+    }
+    
+    func testGetReducedSampleValues() throws {
+        let s1 = HistoricalDataSample(building_active_power: 1.2, grid_active_power: 2.3, pv_active_power: 3.4, quasars_active_power: 4.5, timestamp: "")
+        
+        let array = [s1,s1,s1,s1,s1,s1,s1,s1,s1,s1]
+        let vm = HistoricalDataViewModel(samples: array)
+        
+        let result = vm.getReducedSampleValues(reduced: -1, by: .building_active_power)
+        
+        assert(type(of: result) == [Double].self)
+        assert(result.count == 10)
+        for value in result {
+            assert(String(format: "%.1f", value) == "1.2")
+        }
     }
 
     func testPerformanceExample() throws {

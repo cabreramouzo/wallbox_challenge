@@ -7,10 +7,19 @@
 
 import Foundation
 
+enum sampleType {
+    case building_active_power
+    case grid_active_power
+    case pv_active_power
+    case quasars_active_power
+    
+}
+
 final class HistoricalDataViewModel: ObservableObject {
     @Published var samples = [HistoricalDataSample]()
     
     init() {
+        //TODO: Modularize this JSON logic
         let file = "historic_data"
         guard let url = Bundle.main.url(forResource: file, withExtension: "json") else {
             fatalError("Failed to locate \(file) in bundle.")
@@ -35,10 +44,17 @@ final class HistoricalDataViewModel: ObservableObject {
         }
     }
     
+    init(samples: [HistoricalDataSample]) {
+        self.samples = samples
+    }
+    
     func getReducedSamples(reduced by: Int) -> [HistoricalDataSample] {
+        if by <= 0 {
+            return self.samples
+        }
         var result: [HistoricalDataSample] = []
         for (idx, sample) in self.samples.enumerated() {
-            if idx % by == 0 {
+            if (idx+1) % by == 0 {
                 result.append(sample)
             }
             
@@ -46,18 +62,26 @@ final class HistoricalDataViewModel: ObservableObject {
         return result
     }
     
-    enum sampleType {
-        case building_active_power
-        case grid_active_power
-        case pv_active_power
-        case quasars_active_power
-        
-    }
-    
     func getReducedSampleValues(reduced by: Int, by type: sampleType) -> [Double] {
+        if by <= 0 {
+            var result: [Double] = []
+            for sample in self.samples {
+                switch type {
+                case .building_active_power:
+                    result.append(Double(sample.building_active_power))
+                case .grid_active_power:
+                    result.append(Double(sample.grid_active_power))
+                case .pv_active_power:
+                    result.append(Double(sample.pv_active_power))
+                case .quasars_active_power:
+                    result.append(Double(sample.quasars_active_power))
+                }
+            }
+            return result
+        }
         var result: [Double] = []
         for (idx, sample) in self.samples.enumerated() {
-            if idx % by == 0 {
+            if (idx+1) % by == 0 {
                 switch type {
                 case .building_active_power:
                     result.append(Double(sample.building_active_power))

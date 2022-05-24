@@ -11,6 +11,7 @@ final class LiveDataViewModel: ObservableObject {
     @Published var liveData = LiveDataModel(solar_power: 1, quasars_power: 1, grid_power: 1, building_demand: 1, system_soc: 1, total_energy: 1, current_energy: 1)
     
     init() {
+        //TODO: Modularize this JSON logic
         let file = "live_data"
         guard let url = Bundle.main.url(forResource: file, withExtension: "json") else {
             fatalError("Failed to locate \(file) in bundle.")

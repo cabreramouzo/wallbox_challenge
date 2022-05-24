@@ -122,12 +122,8 @@
 			children = (
 				043649F728394D5400D7E61D /* resources */,
 				047E13252837EE2400FBEA2A /* ems_dashboardApp.swift */,
-				047E13272837EE2400FBEA2A /* DashboardView.swift */,
-				043649FF28394E7600D7E61D /* LiveDataVM.swift */,
-				04364A092839506900D7E61D /* LiveDataModel.swift */,
-				04364A0E2839507A00D7E61D /* HistoricalDataModel.swift */,
-				04364A0428394F2400D7E61D /* HistoricalDataVM.swift */,
-				047E13532837F8A300FBEA2A /* detailView.swift */,
+				0480CDF6283D3A00008EF2B2 /* Charts */,
+				0480CDF5283D39DD008EF2B2 /* Dashboard */,
 				047E13292837EE3000FBEA2A /* Assets.xcassets */,
 				047E132E2837EE3000FBEA2A /* Info.plist */,
 				047E132B2837EE3000FBEA2A /* Preview Content */,
@@ -159,6 +155,26 @@
 				047E13442837EE3000FBEA2A /* Info.plist */,
 			);
 			path = ems_dashboardUITests;
+			sourceTree = "<group>";
+		};
+		0480CDF5283D39DD008EF2B2 /* Dashboard */ = {
+			isa = PBXGroup;
+			children = (
+				047E13272837EE2400FBEA2A /* DashboardView.swift */,
+				04364A092839506900D7E61D /* LiveDataModel.swift */,
+				043649FF28394E7600D7E61D /* LiveDataVM.swift */,
+			);
+			path = Dashboard;
+			sourceTree = "<group>";
+		};
+		0480CDF6283D3A00008EF2B2 /* Charts */ = {
+			isa = PBXGroup;
+			children = (
+				04364A0E2839507A00D7E61D /* HistoricalDataModel.swift */,
+				04364A0428394F2400D7E61D /* HistoricalDataVM.swift */,
+				047E13532837F8A300FBEA2A /* detailView.swift */,
+			);
+			path = Charts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
