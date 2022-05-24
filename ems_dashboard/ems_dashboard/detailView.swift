@@ -20,26 +20,56 @@ struct detailView: View {
     let chart_style_quasars = ChartStyle(backgroundColor: Color.white, accentColor: Color.black, gradientColor: GradientColors.prplNeon, textColor: Color.black, legendTextColor: Color.black, dropShadowColor: Color.black)
     
     var body: some View {
-
-        ScrollView {
-            LineView(data: samples_building, title: "Building", style: chart_style_building).padding().frame(width: .infinity, height: 300, alignment: .center)
-            Spacer().padding(.bottom, 50)
+        
+        List {
+            Group {
+                LineView(data: samples_building, title: "Building", style: chart_style_building).padding().frame(width: nil, height: 300, alignment: .center)
+                Spacer().padding(.bottom, 50)
                 LineView(data: samples_grid, title: "Grid", style: chart_style_grid).padding()
-                    .frame(width: .infinity, height: 300, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-            Spacer().padding(.bottom, 50)
+                    .frame(width: nil, height: 300, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                Spacer().padding(.bottom, 50)
                 LineView(data: samples_pv, title: "PV", style: chart_style_pv).padding()
-                    .frame(width: .infinity, height: 300, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-            Spacer().padding(.bottom, 50)
+                    .frame(width: nil, height: 300, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                Spacer().padding(.bottom, 50)
                 LineView(data: samples_quasars, title: "Quasars", style: chart_style_quasars).padding()
-                    .frame(width: .infinity, height: 300, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-            Spacer().padding(.bottom, 50)
-            MultiLineChartView(data: [
-                                (samples_building, GradientColors.green),
-                                (samples_grid, GradientColors.purple),
-                                (samples_pv, GradientColors.orngPink),
-                                (samples_quasars, GradientColors.prplNeon)], title: "All", legend: "", style: ChartStyle(backgroundColor: Color.white, accentColor: Color.black, gradientColor: GradientColors.green, textColor: Color.black, legendTextColor: Color.black, dropShadowColor: Color.clear), form: ChartForm.large, dropShadow: false)
-            Spacer().padding(.bottom, 50)
-
+                    .frame(width: nil, height: 300, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                Spacer().padding(.bottom, 50)
+                MultiLineChartView(data: [
+                                    (samples_building, GradientColors.green),
+                                    (samples_grid, GradientColors.purple),
+                                    (samples_pv, GradientColors.orngPink),
+                                    (samples_quasars, GradientColors.blue)], title: "All", legend: "", style: ChartStyle(backgroundColor: Color.white, accentColor: Color.black, gradientColor: GradientColors.green, textColor: Color.black, legendTextColor: Color.black, dropShadowColor: Color.clear), form: ChartForm.large, dropShadow: false)
+                    .padding(.trailing, 10)
+                Spacer().padding(.bottom, 50)
+            }
+            Group {
+                HStack {
+                    VStack(alignment: .leading) {
+                        Label(
+                            title: { Text("Building").font(.callout) },
+                            icon: { Image(systemName: "circle.fill").accentColor(.green)}
+                        )
+                        Spacer()
+                        Label(
+                            title: { Text("Grid") },
+                            icon: { Image(systemName: "circle.fill").accentColor(.purple)}
+                        )
+                    }
+                    Spacer()
+                    VStack(alignment:.leading) {
+                        Label(
+                            title: { Text("PV") },
+                            icon: { Image(systemName: "circle.fill").accentColor(.pink)}
+                        )
+                        Spacer()
+                        Label(
+                            title: { Text("Quasars") },
+                            icon: { Image(systemName: "circle.fill").accentColor(.blue)}
+                        )
+                    }
+                }
+            }
+            
         }
     }
 }

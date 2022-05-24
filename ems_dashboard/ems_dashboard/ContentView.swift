@@ -10,46 +10,66 @@ import SwiftUI
 struct ContentView: View {
     @EnvironmentObject var liveDataVM: LiveDataViewModel
     @StateObject var HistoricalDataVM = HistoricalDataViewModel()
+    
+    @State var quasarIsPositive = false
     var body: some View {
         NavigationView {
             VStack {
                 Form {
                     Section(header: Text("Quasar Energy")) {
                         HStack {
-                            VStack {
-                                Text(String(liveDataVM.liveData.quasars_power))
-                                Text("Charged")
+                            if (liveDataVM.liveData.quasars_power > 0) {
+                                Image(systemName: "bolt")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 40)
+                                Text("Charging from the grid...")
+                                    .font(.footnote)
+                                    .padding()
+                                Spacer()
+                                Text(String(liveDataVM.liveData.quasars_power) + " Kwh")
+                                    .accentColor(.green)
+                                
+                            } else {
+                                Image("powerplug")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 50)
+                                Text("Discharging to the building...")
+                                    .font(.footnote)
+                                    .padding()
+                                Spacer()
+                                Text(String(liveDataVM.liveData.quasars_power) + " Kwh")
+                                    .accentColor(.red)
                             }
-                            Spacer()
-                            VStack {
-                                Text(String(liveDataVM.liveData.quasars_power))
-                                Text("Discharged")
-                            }
-                            
                         }
                     }
                     
                     Section(header: Text("Live data")) {
                         HStack {
                             VStack {
-                                Text(String(liveDataVM.liveData.solar_power))
+                                Text(String(liveDataVM.liveData.solar_power) + " Kwh")
+                                    .padding()
                                 Text("Solar Power")
                             }
                             Spacer()
                             VStack {
-                                Text(String(liveDataVM.liveData.quasars_power))
+                                Text(String(liveDataVM.liveData.quasars_power) + " Kwh")
+                                    .padding()
                                 Text("Quasar Power")
                             }
                             
                         }
                         HStack {
                             VStack {
-                                Text(String(liveDataVM.liveData.grid_power))
+                                Text(String(liveDataVM.liveData.grid_power) + " Kwh")
+                                    .padding()
                                 Text("Grid")
                             }
                             Spacer()
                             VStack {
-                                Text(String(liveDataVM.liveData.system_soc))
+                                Text(String(liveDataVM.liveData.system_soc) + " Kwh")
+                                    .padding()
                                 Text("System soc")
                             }
                             
@@ -57,11 +77,13 @@ struct ContentView: View {
                         HStack {
                             VStack {
                                 Text("3.45 Kwh")
+                                    .padding()
                                 Text("Total Energy")
                             }
                             Spacer()
                             VStack {
                                 Text("3.45 Kwh")
+                                    .padding()
                                 Text("Current Energy")
                             }
                             
@@ -76,40 +98,44 @@ struct ContentView: View {
                                 samples_pv: HistoricalDataVM.getReducedSampleValues(reduced: 10, by: .pv_active_power),
                                 samples_quasars: HistoricalDataVM.getReducedSampleValues(reduced: 10, by: .quasars_active_power)),
                             label: {
-                                Text("View chart details")
+                                
+                                HStack {
+                                    Text("View chart details")
+                                    Image(systemName: "chart.bar.fill")
+                                }
                             })
                             .navigationTitle(Text("View charts"))
                         HStack {
                             VStack {
-                                Text("3.45 Kwh")
+                                Text(String(format: "%.0f", (liveDataVM.liveData.solar_power / liveDataVM.liveData.system_soc) * 100 ) + "%")
                                 Text("Solar Power")
                             }
                             Spacer()
                             VStack {
-                                Text("3.45 Kwh")
+                                Text(String(format: "%.0f", (abs(liveDataVM.liveData.quasars_power) / liveDataVM.liveData.system_soc) * 100 ) + "%")
                                 Text("Quasar Power")
                             }
                             
                         }
                         HStack {
                             VStack {
-                                Text("3.45 Kwh")
+                                Text(String(format: "%.0f", (liveDataVM.liveData.grid_power / liveDataVM.liveData.system_soc) * 100 ) + "%")
                                 Text("Grid")
                             }
                             Spacer()
                             VStack {
-                                Text("3.45 Kwh")
-                                Text("System soc")
+                                Text(String(format: "%.0f", liveDataVM.liveData.system_soc) + "%")
+                                Text("System SoC")
                             }
                         }
                         HStack {
                             VStack {
-                                Text("3.45 Kwh")
+                                Text(String(liveDataVM.liveData.total_energy) + " kwh")
                                 Text("Total Energy")
                             }
                             Spacer()
                             VStack {
-                                Text("3.45 Kwh")
+                                Text(String(liveDataVM.liveData.current_energy) + " kwh")
                                 Text("Current Energy")
                             }
                             
