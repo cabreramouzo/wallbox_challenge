@@ -39,7 +39,7 @@ struct detailView: View {
                                     (samples_grid, GradientColors.purple),
                                     (samples_pv, GradientColors.orngPink),
                                     (samples_quasars, GradientColors.blue)], title: "All", legend: "", style: ChartStyle(backgroundColor: Color.white, accentColor: Color.black, gradientColor: GradientColors.green, textColor: Color.black, legendTextColor: Color.black, dropShadowColor: Color.clear), form: ChartForm.large, dropShadow: false)
-                    .padding()
+                    
                 Spacer().padding(.bottom, 50)
             }
             Group {

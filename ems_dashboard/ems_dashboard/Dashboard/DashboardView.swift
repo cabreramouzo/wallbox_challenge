@@ -107,24 +107,24 @@ struct DashboardView: View {
                             })
                             .navigationTitle(Text("Dashboard"))
                         HStack {
-                            VStack {
+                            VStack(alignment: .center) {
                                 Text(String(format: "%.0f", (liveDataVM.liveData.solar_power / liveDataVM.liveData.building_demand) * 100 ) + " %").padding(5)
                                 Text("Solar Power")
                             }
                             Spacer()
-                            VStack {
+                            VStack(alignment: .center) {
                                 Text(String(format: "%.0f", (abs(liveDataVM.liveData.quasars_power) / liveDataVM.liveData.building_demand) * 100 ) + " %").padding(5)
-                                Text("Quasar Power")
+                                Text("    Quasar Power    ")
                             }
                             
                         }
                         HStack {
-                            VStack {
+                            VStack(alignment: .center) {
                                 Text(String(format: "%.0f", (liveDataVM.liveData.grid_power / liveDataVM.liveData.building_demand) * 100 ) + " %").padding(5)
-                                Text("     Grid     ")
+                                Text("      Grid     ")
                             }
                             Spacer()
-                            VStack {
+                            VStack(alignment: .center) {
                                 Text(String(format: "%.0f", liveDataVM.liveData.system_soc) + " %").padding(5)
                                 Text("System SoC status")
                             }
