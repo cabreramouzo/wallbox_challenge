@@ -129,18 +129,6 @@ struct DashboardView: View {
                                 Text("System SoC status")
                             }
                         }
-                        HStack {
-                            VStack {
-                                Text(String(liveDataVM.liveData.total_energy) + " kwh").padding(5)
-                                Text("Total Energy")
-                            }
-                            Spacer()
-                            VStack {
-                                Text(String(liveDataVM.liveData.current_energy) + " kwh").padding(5)
-                                Text("Current Energy")
-                            }
-                            
-                        }
                     }
                 }
             }.navigationBarTitle(Text("Dashboard"))
