@@ -144,7 +144,7 @@ struct DashboardView: View {
                         }
                     }
                 }
-            }
+            }.navigationBarTitle(Text("Dashboard"))
         }
     }
 }
