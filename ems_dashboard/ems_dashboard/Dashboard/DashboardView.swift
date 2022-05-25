@@ -11,7 +11,6 @@ struct DashboardView: View {
     @EnvironmentObject var liveDataVM: LiveDataViewModel
     @StateObject var HistoricalDataVM = HistoricalDataViewModel()
     
-    @State var quasarIsPositive = false
     var body: some View {
         NavigationView {
             VStack {
